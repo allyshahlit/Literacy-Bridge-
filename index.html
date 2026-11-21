@@ -3,123 +3,353 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Literacy Bridge | Community Book Drives</title>
+  <title>Literacy Bridge</title>
+  <!-- Editorial Serif, Handwritten Script & Clean Body Fonts -->
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=La+Belle+Aurore&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* --- EASY COLOR SETTINGS (Change these hex codes to update your brand colors) --- */
+    /* --- COQUETTE EDITORIAL & WARM BERRY PALETTE --- */
     :root {
-      --primary: #1b4332;    /* Deep Forest Green */
-      --accent: #d8f3dc;     /* Soft Sage Background */
-      --button: #2d6a4f;     /* Button Green */
-      --text: #1f2937;       /* Dark Charcoal Text */
-      --bg: #ffffff;         /* Page Background */
+      --cream: #fbf4f1;          /* Warm Vintage Paper */
+      --blush: #f7e1e6;          /* Soft Petal Pink */
+      --rose: #d97a96;           /* Warm Dust Rose */
+      --berry: #8c3454;          /* Rich Muted Magenta */
+      --deep-plum: #421d2b;      /* Espresso Plum Ink */
+      --gold-tint: #f5ebe0;      /* Antique Book Page Cream */
+      --white: #ffffff;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); }
     
-    /* Header / Hero Section */
-    header { background: var(--primary); color: #fff; padding: 60px 20px; text-align: center; }
-    header h1 { font-size: 2.4rem; margin-bottom: 10px; letter-spacing: -0.5px; }
-    header p { font-size: 1.15rem; max-width: 600px; margin: 0 auto 25px; opacity: 0.9; }
-    
-    /* Buttons */
-    .btn { display: inline-block; background: #fff; color: var(--primary); padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; transition: 0.2s; }
-    .btn-dark { background: var(--button); color: #fff; }
-    
-    /* Main Layout */
-    main { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-    section { margin-bottom: 50px; }
-    h2 { color: var(--primary); font-size: 1.6rem; margin-bottom: 15px; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
-    
-    /* Event Cards */
-    .card { background: #f9fafb; border: 1px solid #e5e7eb; border-left: 5px solid var(--primary); padding: 20px; border-radius: 8px; margin-bottom: 15px; }
-    .card h3 { margin-bottom: 6px; color: var(--primary); }
-    .tag { display: inline-block; background: var(--accent); color: var(--primary); font-size: 0.8rem; font-weight: bold; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; }
-    
-    /* Two-Column Grid for Guidelines */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .box { background: var(--accent); padding: 20px; border-radius: 8px; }
-    .box h3 { color: var(--primary); margin-bottom: 8px; }
-    ul { padding-left: 20px; }
-    li { margin-bottom: 6px; }
+    body { 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      line-height: 1.75; 
+      color: var(--deep-plum); 
+      background-color: var(--cream);
+      /* Subtle vintage gingham / grid paper background */
+      background-image: 
+        linear-gradient(to right, rgba(217, 122, 150, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(217, 122, 150, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
 
-    /* Footer */
-    footer { text-align: center; padding: 30px 20px; background: #f3f4f6; font-size: 0.9rem; color: #4b5563; }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 700; }
+
+    /* Decorative Top Ribbon Bar */
+    .top-lace {
+      height: 14px;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--berry),
+        var(--berry) 10px,
+        var(--rose) 10px,
+        var(--rose) 20px
+      );
+    }
+
+    /* Editorial Bookplate Header */
+    header { 
+      background: radial-gradient(circle at top, #b34d71 0%, var(--berry) 100%);
+      color: var(--cream); 
+      padding: 55px 20px 75px; 
+      text-align: center;
+      position: relative;
+      border-bottom: 4px double var(--blush);
+    }
+
+    .script-tag {
+      font-family: 'La Belle Aurore', cursive;
+      font-size: 1.55rem;
+      color: var(--blush);
+      display: block;
+      margin-bottom: -5px;
+    }
+
+    header h1 { 
+      font-size: 3.4rem; 
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      text-shadow: 0 3px 12px rgba(66, 29, 43, 0.25);
+    }
+
+    header p { 
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.45rem; 
+      max-width: 580px; 
+      margin: 0 auto; 
+      color: var(--gold-tint);
+    }
+
+    /* Floating Scrapbook Navigation Tabs */
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: -26px auto 30px;
+      padding: 0 15px;
+      position: relative;
+      z-index: 20;
+    }
+
+    .tab-btn {
+      background: var(--white);
+      color: var(--berry);
+      border: 1.5px solid var(--rose);
+      padding: 11px 22px;
+      border-radius: 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 4px 4px 0px var(--blush);
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--rose);
+    }
+
+    .tab-btn.active {
+      background: var(--berry);
+      color: var(--cream);
+      border-color: var(--berry);
+      box-shadow: 4px 4px 0px var(--rose);
+    }
+
+    /* Main Layout */
+    main { max-width: 840px; margin: 0 auto; padding: 15px 20px 70px; }
+    
+    .page-section { display: none; animation: pageFlip 0.35s ease; }
+    .page-section.active { display: block; }
+
+    @keyframes pageFlip {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Ornate Section Titles with Custom Ribbon Divider */
+    .section-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-header h2 { 
+      color: var(--berry); 
+      font-size: 2.35rem; 
+      line-height: 1.1;
+    }
+
+    .ribbon-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 6px;
+      color: var(--rose);
+    }
+    .ribbon-divider::before, .ribbon-divider::after {
+      content: "";
+      height: 1.5px;
+      width: 65px;
+      background: linear-gradient(90deg, transparent, var(--rose), transparent);
+    }
+
+    /* Scrapbook Offset Cards */
+    .paper-card { 
+      background: var(--white); 
+      border: 1.5px solid #e8c4cf; 
+      padding: 32px; 
+      border-radius: 20px; 
+      margin-bottom: 26px; 
+      box-shadow: 7px 7px 0px var(--blush);
+      position: relative;
+    }
+
+    /* Decorative Corner Brackets on Main Story */
+    .bookplate {
+      background: linear-gradient(180deg, #ffffff 0%, #fdf8f9 100%);
+      border: 2px solid var(--rose);
+      outline: 1.5px dashed var(--rose);
+      outline-offset: -8px;
+    }
+
+    .story-card p {
+      margin-bottom: 18px;
+      font-size: 1.03rem;
+    }
+    .story-card p:last-child { margin-bottom: 0; }
+
+    /* Highlight Stat Polaroids */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .stat-polaroid {
+      background: var(--white);
+      padding: 22px 18px;
+      border-radius: 16px;
+      text-align: center;
+      border: 1.5px solid #e8c4cf;
+      box-shadow: 5px 5px 0px var(--blush);
+      position: relative;
+    }
+
+    /* Cute Washi Tape Effect on Top of Cards */
+    .washi-tape {
+      width: 75px;
+      height: 18px;
+      background: rgba(217, 122, 150, 0.35);
+      position: absolute;
+      top: -9px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      border-left: 2px dotted rgba(255,255,255,0.7);
+      border-right: 2px dotted rgba(255,255,255,0.7);
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--berry);
+      display: block;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    /* Event Cards with Ticket Stub Vibe */
+    .event-card {
+      background: var(--white);
+      border: 1.5px solid var(--rose);
+      border-left: 8px solid var(--berry);
+      border-radius: 18px;
+      padding: 26px;
+      margin-bottom: 20px;
+      box-shadow: 6px 6px 0px var(--blush);
+    }
+
+    .pill-tag { 
+      display: inline-block; 
+      background: var(--blush); 
+      color: var(--berry); 
+      font-size: 0.78rem; 
+      font-weight: 700; 
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 4px 14px; 
+      border-radius: 50px; 
+      margin-bottom: 10px; 
+    }
+
+    .btn { 
+      display: inline-block; 
+      background: var(--berry); 
+      color: var(--cream); 
+      padding: 13px 28px; 
+      text-decoration: none; 
+      border-radius: 50px; 
+      font-weight: 700; 
+      margin-top: 12px;
+      box-shadow: 4px 4px 0px var(--rose);
+      transition: transform 0.2s ease;
+    }
+    .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--rose); }
+
+    /* Guidelines Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+    .box-yes { 
+      background: var(--white); 
+      border: 1.5px solid var(--rose);
+      padding: 26px; 
+      border-radius: 20px; 
+      box-shadow: 6px 6px 0px var(--blush);
+    }
+    .box-no { 
+      background: var(--gold-tint); 
+      border: 1.5px dashed var(--rose);
+      padding: 26px; 
+      border-radius: 20px; 
+    }
+    .grid h3 { color: var(--berry); margin-bottom: 14px; font-size: 1.55rem; }
+    
+    ul { list-style: none; padding-left: 0; }
+    li { margin-bottom: 10px; padding-left: 26px; position: relative; }
+    .box-yes li::before { content: "🎀"; position: absolute; left: 0; font-size: 0.9rem; }
+    .box-no li::before { content: "🥀"; position: absolute; left: 0; font-size: 0.9rem; }
+
+    /* Team Polaroid Cards */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 24px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border: 1.5px solid #e8c4cf;
+      border-radius: 20px;
+      padding: 30px 22px 24px;
+      text-align: center;
+      box-shadow: 6px 6px 0px var(--blush);
+      position: relative;
+    }
+
+    .avatar-frame {
+      width: 84px;
+      height: 84px;
+      background: var(--blush);
+      color: var(--berry);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      margin: 0 auto 14px;
+      border: 2px solid var(--rose);
+      outline: 2px dashed var(--white);
+      outline-offset: -5px;
+    }
+
+    .role {
+      font-family: 'La Belle Aurore', cursive;
+      color: var(--berry);
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    footer { 
+      text-align: center; 
+      padding: 35px 20px; 
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem; 
+      color: var(--berry); 
+      border-top: 1.5px dashed #e2b8c6;
+    }
   </style>
 </head>
 <body>
 
-  <!-- HERO BANNER -->
+  <div class="top-lace"></div>
+
+  <!-- HEADER -->
   <header>
+    <span class="script-tag">Est. 2026 &bull; Community Book Drives</span>
     <h1>Literacy Bridge</h1>
-    <p>Bridging the gap between pre-loved books and local readers through community-led book drives.</p>
-    <a href="#drives" class="btn">See Upcoming Book Drives</a>
+    <p>Bridging the literacy gap, one book at a time.</p>
   </header>
 
-  <main>
-    <!-- ABOUT SECTION -->
-    <section id="about">
-      <h2>Who We Are</h2>
-      <p>Literacy Bridge is a local initiative started by friends passionate about making books accessible to everyone. We collect gently used books from generous neighbours and redistribute them to local schools, community centres, and families.</p>
-    </section>
-
-    <!-- UPCOMING BOOK DRIVES (Copy & paste a "card" block to add more events) -->
-    <section id="drives">
-      <h2>Upcoming Book Drives</h2>
-
-      <div class="card">
-        <span class="tag">NEXT EVENT</span>
-        <h3>Winter Community Book Drop-Off</h3>
-        <p><strong>Date:</strong> Saturday, 5th December | 10:00 AM – 2:00 PM</p>
-        <p><strong>Location:</strong> High Street Community Hall (Main Entrance)</p>
-        <p>Drop off your pre-loved books or browse our free community reading table!</p>
-      </div>
-
-      <div class="card">
-        <span class="tag">UPCOMING</span>
-        <h3>School & Family Book Drive</h3>
-        <p><strong>Date:</strong> Sunday, 17th January | 11:00 AM – 3:00 PM</p>
-        <p><strong>Location:</strong> Local Park Pavilion</p>
-        <p>Focusing on children's picture books, teen fiction, and revision guides.</p>
-      </div>
-    </section>
-
-    <!-- DONATION GUIDELINES -->
-    <section id="guidelines">
-      <h2>What We Collect</h2>
-      <div class="grid">
-        <div class="box">
-          <h3>Yes, Please!</h3>
-          <ul>
-            <li>Children's & young adult books</li>
-            <li>Modern fiction & non-fiction</li>
-            <li>Clean, intact paperbacks & hardbacks</li>
-            <li>Recent study & revision guides</li>
-          </ul>
-        </div>
-        <div class="box">
-          <h3>No, Thank You</h3>
-          <ul>
-            <li>Torn, water-damaged, or mouldy books</li>
-            <li>Outdated encyclopedias or dictionaries</li>
-            <li>Magazines, catalogues, or newspapers</li>
-            <li>Books with heavy writing/highlighting</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT / HOST A DRIVE -->
-    <section id="contact">
-      <h2>Get Involved</h2>
-      <p style="margin-bottom: 15px;">Have a large box of books that needs collecting, or want Literacy Bridge to host a book drive at your school, workplace, or event? Reach out to our team:</p>
-      <a href="mailto:hello@literacybridge.org" class="btn btn-dark">Email Literacy Bridge</a>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2026 Literacy Bridge. Run by local book lovers.</p>
-  </footer>
-
-</body>
-</html>
+  <!-- NAVIGATION TABS -->
+  <nav>
+    <button class="tab-btn active" onclick="openTab('home', this)">🏡 Home</button>
+    <button class="tab-btn" onclick="openTab('drives', this)">🎀 Upcoming Drives</button>
+    <button class="tab-btn" onclick="openTab('donations', this)">💌 Donations</button>
